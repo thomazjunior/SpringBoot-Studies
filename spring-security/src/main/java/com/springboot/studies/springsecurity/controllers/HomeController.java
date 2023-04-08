@@ -1,4 +1,4 @@
-package com.springboot.studies.springsecurity;
+package com.springboot.studies.springsecurity.controllers;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.CurrentSecurityContext;
@@ -12,11 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("")
 public class HomeController {
-    private final LocationService locationService;
-
-    public HomeController(LocationService locationService) {
-        this.locationService = locationService;
-    }
 
     // String greeting(Authentication auth) {
     @GetMapping
@@ -26,11 +21,5 @@ public class HomeController {
 
         // return "Hello World :) " + auth.getName();
         return "Hello world " + name;
-    }
-
-    @PostMapping("/location")
-    public String changeLocation(Authentication authentication, @RequestBody String location) {
-
-        return this.locationService.moveTo(location);
     }
 }
