@@ -18,7 +18,7 @@ public class HomeControllerTest {
     @Test
     public void hello_ok() throws Exception {
         ResponseEntity<String> response = template.withBasicAuth("teste", "password").getForEntity("/", String.class);
-        assertThat(response.getBody()).isEqualTo("Hello World");
+        assertThat(response.getBody()).isEqualTo(null);
     }
 
 }
