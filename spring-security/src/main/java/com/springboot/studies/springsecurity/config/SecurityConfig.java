@@ -3,28 +3,12 @@ package com.springboot.studies.springsecurity.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class SecurityConfig {
-
-    @Bean
-    public UserDetailsService userDetailsService() {
-        UserDetails user1 = User.builder()
-                .username("teste")
-                .password(passwordEncoder().encode("password"))
-                .authorities("read")
-                .build();
-
-        return new InMemoryUserDetailsManager(user1);
-    }
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         // authentication
@@ -33,7 +17,11 @@ public class SecurityConfig {
 
         // autorization
         http.authorizeHttpRequests()
+                .antMatchers("/user").permitAll()
+                .antMatchers("/admin").hasAuthority("read")
+                //.antMatchers("/smth").access(new WebExpressionAuthorizationManager("isAuthenticated")) only after 5.8 version
                 .anyRequest().authenticated();
+        http.csrf(csrf -> csrf.ignoringAntMatchers("/user"));
 
         return http.build();
     }

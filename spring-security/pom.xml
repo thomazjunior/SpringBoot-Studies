@@ -22,6 +22,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.32</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
@@ -39,11 +46,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webflux</artifactId>
 		</dependency>
+		<!-- Use MySQL Connector-J -->
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<optional>true</optional>
+			<version>1.18.22</version>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -56,12 +65,12 @@
 			<scope>test</scope>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.springframework.security.experimental/spring-security-oauth2-authorization-server -->
-<dependency>
-    <groupId>org.springframework.security.experimental</groupId>
-    <artifactId>spring-security-oauth2-authorization-server</artifactId>
-    <version>0.0.1</version>
-</dependency>
-		
+		<dependency>
+			<groupId>org.springframework.security.experimental</groupId>
+			<artifactId>spring-security-oauth2-authorization-server</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
@@ -94,5 +103,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
