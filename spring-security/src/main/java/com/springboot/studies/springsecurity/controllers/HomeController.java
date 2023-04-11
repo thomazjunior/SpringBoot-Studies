@@ -22,4 +22,9 @@ public class HomeController {
         // return "Hello World :) " + auth.getName();
         return "Hello world " + name;
     }
+
+    @GetMapping("/admin")
+    String greetingAdmin() {
+        return "Hello Admin";
+    }
 }

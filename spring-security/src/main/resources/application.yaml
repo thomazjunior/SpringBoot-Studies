@@ -10,10 +10,14 @@ spring:
           jwt:
             jwk-set-uri: http://auth-server:9000/oauth2/jwks
     datasource: 
-        url: jdbc:h2:mem:tesdb
-        username: sa
-        password: 
-        driverClassName: org.h2.Driver
-    jpa: 
-      spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+        url: jdbc:mysql://localhost/spring-security
+        username: root
+        password: Thz192900
+    jpa:
+      open-in-view: 'false'
+      hibernate:
+        use-new-id-generator-mappings: 'false'
+        ddl-auto: update
+      show-sql: 'false'
+
       
